@@ -1,11 +1,11 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.6.1
+Version:	3.6.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	0ceb1ad579d88d3a7d577acf83b78c37
+# Source0-md5:	178faf9ed1a57c306612d61423b9874e
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
