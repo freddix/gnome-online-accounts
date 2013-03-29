@@ -1,11 +1,11 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.6.3
+Version:	3.8.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	7ab4e7b22a629a32bf794f9c2e52e66d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	c64def67a57ea436b9c3a3097615f5ad
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -80,8 +80,6 @@ sed -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
 	--disable-static	\
 	--enable-facebook	\
 	--enable-google		\
-	--enable-twitter	\
-	--enable-yahoo		\
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -127,8 +125,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgoa-1.0.so
 %attr(755,root,root) %{_libdir}/libgoa-backend-1.0.so
-%{_libdir}/libgoa-1.0.la
-%{_libdir}/libgoa-backend-1.0.la
+%dir %{_libdir}/goa-1.0
+%dir %{_libdir}/goa-1.0/include
+%{_libdir}/goa-1.0/include/goaconfig.h
 %{_includedir}/goa-1.0
 %{_datadir}/gir-1.0/Goa-1.0.gir
 %{_pkgconfigdir}/goa-1.0.pc
