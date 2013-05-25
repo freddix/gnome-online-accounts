@@ -1,11 +1,11 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.8.0
+Version:	3.8.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	c64def67a57ea436b9c3a3097615f5ad
+# Source0-md5:	d842ea6a4945df817756d81d6f6dec0f
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
