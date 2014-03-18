@@ -1,16 +1,15 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.10.2
+Version:	3.10.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	1b13b28c9a58a3b5501e6f44df984ea2
+# Source0-md5:	37627e71bf5098b59947b8e1529b3991
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 1.38.0
 BuildRequires:	gtk-doc
 BuildRequires:	gtk+3-webkit-devel >= 2.2.0
@@ -67,7 +66,6 @@ GOA API documentation.
     -i -e 's/GNOME_DEBUG_CHECK//g' configure.ac
 
 %build
-%{__gnome_doc_prepare}
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
