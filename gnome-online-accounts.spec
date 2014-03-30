@@ -1,20 +1,21 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.10.3
+Version:	3.12.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	37627e71bf5098b59947b8e1529b3991
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	e15c6a09ae4c0868b757099684896e3b
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gobject-introspection-devel >= 1.38.0
+BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gtk+3-webkit-devel >= 2.4.0
 BuildRequires:	gtk-doc
-BuildRequires:	gtk+3-webkit-devel >= 2.2.0
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
+BuildRequires:	krb5-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	libsoup-gnome-devel
@@ -76,8 +77,14 @@ GOA API documentation.
 %configure \
 	--disable-silent-rules	\
 	--disable-static	\
+	--enable-exchange	\
 	--enable-facebook	\
+	--enable-flickr		\
 	--enable-google		\
+	--enable-imap-smtp	\
+	--enable-kerberos	\
+	--enable-owncloud	\
+	--enable-telepathy	\
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
@@ -86,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang gnome-online-accounts --all-name
 
