@@ -1,16 +1,17 @@
 Summary:	Provide online accounts information
 Name:		gnome-online-accounts
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	729cb9ccbc83fceb1ce2e1808dd10b74
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-online-accounts/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	da3791e872cd90bacb7fd51b3b710d26
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gcr-devel >= 3.14.0
 BuildRequires:	gettext-devel
-BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gobject-introspection-devel >= 1.42.0
 BuildRequires:	gtk+3-webkit-devel >= 2.4.0
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -20,8 +21,10 @@ BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	libsoup-gnome-devel
 BuildRequires:	rest-devel >= 0.7.90
+BuildRequires:	telepathy-glib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Requires(post,postun):	/usr/bin/gtk-update-icon-cache
+Requires(post,postun):	glib-gio-gsettings >= 1:2.38.0
 Requires(post,postun):	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,6 +86,7 @@ GOA API documentation.
 	--enable-google		\
 	--enable-imap-smtp	\
 	--enable-kerberos	\
+	--enable-media-server	\
 	--enable-owncloud	\
 	--enable-telepathy	\
 	--with-html-dir=%{_gtkdocdir}
@@ -103,9 +107,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %update_icon_cache hicolor
+%update_gsettings_cache
 
 %postun
 %update_icon_cache hicolor
+%update_gsettings_cache
 
 %post   libs -p /usr/sbin/ldconfig
 %postun libs -p /usr/sbin/ldconfig
@@ -116,6 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}
 %attr(755,root,root) %{_libexecdir}/goa-daemon
 %{_datadir}/dbus-1/services/org.gnome.OnlineAccounts.service
+%{_datadir}/glib-2.0/schemas/org.gnome.online-accounts.gschema.xml
 %{_datadir}/gnome-online-accounts
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_iconsdir}/hicolor/*/apps/*.svg
